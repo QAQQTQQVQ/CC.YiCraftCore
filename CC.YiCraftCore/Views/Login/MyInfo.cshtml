@@ -1,0 +1,91 @@
+﻿@model CC.YiCraftCore.Models.UserInfo
+@{
+    Layout = "_Layout";
+}
+
+<div class="bg-success shadow mb-4" style="height: 300px;"></div>
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-sm-2 col-xs-12 shadow bg-white shadow" style="background-color: white;">
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+            <button class="btn btn-outline-success col-12">个人资料</button>
+        </div>
+        <div class="ml-sm-4 col-sm-9 ml-xs-0 col-xs-12  bg-white shadow" style="height: 800px;background-color: white;">
+            <div>
+                <div class="row mt-4">
+                    <label class="col-6">
+                        账号信息
+                    </label>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-warning">修改</button>
+                    </div>
+
+                </div>
+                <hr>
+                <table class="table" style="width :300px;">
+                    <tr>
+                        <td>ID</td>
+                        <td>@Model.ID</td>
+                    </tr>
+                    <tr>
+                        <td>用户名</td>
+                        <td>@Model.UserName</td>
+                    </tr>
+                    <tr>
+                        <td>简介</td>
+                        <td>暂未开放</td>
+                    </tr>
+                    <tr>
+                        <td>等级</td>
+                        <td>@Model.LV</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+
+            <div>
+                <div class="row mt-4">
+                    <label class="col-6">
+                        账号信息
+                    </label>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-warning">修改</button>
+                    </div>
+
+                </div>
+                <hr>
+                <table class="table" style="width :300px;">
+                    <tr>
+                        <td>ID</td>
+                        <td>@Model.ID</td>
+                    </tr>
+                    <tr>
+                        <td>用户名</td>
+                        <td>@Model.UserName</td>
+                    </tr>
+                    <tr>
+                        <td>简介</td>
+                        <td>暂未开放</td>
+                    </tr>
+                    <tr>
+                        <td>等级</td>
+                        <td>@Model.LV</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+

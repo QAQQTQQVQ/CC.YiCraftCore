@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor  _httpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>YiCraftCore意界核心</title>
+    <link rel="stylesheet" href="~/css/animate.css" />
+    <script src="~/js/jquery.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+
+<body class="m-0 " style="        overflow-x: hidden;
+        background-color: #F6F6F6;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light animated bounceInDown shadow">
+            <a class="navbar-brand" href="/Home/Index">YiCraftCore意界核心</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">主页 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">图库</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Download">下载</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Question/Index">白名单审核</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">关于我们</a>
+                    </li>
+                </ul>
+                <form asp-controller="Search" asp-action="Index" class="form-inline my-2 my-lg-0">
+                    <img src="~/img/登入.png" height="30" />
+                    <a class="nav-link" href="/Login/MyInfo"> 欢迎：@(_httpContextAccessor.HttpContext.Session.GetString("user"))</a>
+                    <a class="nav-link" href="/Login/MyInfo"> 等级：@(_httpContextAccessor.HttpContext.Session.GetString("LV"))</a>
+                    <input class="form-control mr-sm-2" name="Uid" id="Uid" type="search" placeholder="游戏ID" aria-label="游戏ID">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
+                    <a href="/Home/Out" class="mx-2 btn btn-danger my-2 my-sm-0">退出</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+    <footer>
+        <div class="row">
+            <hr>
+            <div class="col-12 shadow animated bounceInUp mt-5 text-center py-2" style="        height: 100px;
+        background-color: #F0F0F0;">
+                <a> 大数据学院 &nbsp;</a><a>&copy; 2020 - FYZY &nbsp;</a>
+                <a href="http://www.beian.miit.gov.cn/">赣ICP备20008025号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36012102000235">
+                    <img src="~/img/备案图标.png" />
+                    赣公网安备 36012102000235号
+                </a>
+                <br />
+                <a>友情链接：</a><a href="http://funto.top/">饭米爱大桶</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

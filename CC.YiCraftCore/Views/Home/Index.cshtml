@@ -1,0 +1,120 @@
+﻿@model List<CC.YiCraftCore.Models.NoticeInfo>
+@{
+    Layout = "_Layout";
+}
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-2  pt-0 text-center">
+            <div class="col-12 shadow bg-white animated bounceInLeft mt-0 mb-4 img-thumbnail ">
+                <a href="/Question/Index">白名单获取</a>
+                <img src="~/img/白名单管理.png" height=80 />
+            </div>
+            <div class="col-12 shadow bg-white animated bounceInLeft img-thumbnail my-4 ">
+                <a href="#">历史图库</a>
+                <img src="~/img/图库.png" height=80 />
+            </div>
+            <div class="col-12 shadow bg-white animated bounceInLeft my-4 img-thumbnail">
+                <a href="/Home/Download">下载客户端</a>
+                <img src="~/img/下载.png" height=80 />
+            </div>
+            <div class="col-12 shadow bg-white animated bounceInLeft img-thumbnail  my-4 ">
+                <a href="#">关于我们</a>
+                <img src="~/img/关于我们.png" height=80 />
+            </div>
+        </div>
+
+
+        <div class="col-10 shadow bg-white animated bounceInRight text-center ">
+            <div class="mt-5 delay-4s">
+            <h1 class="animated fadeInDown"><span>YiCraftCore 意界核心</span></h1>
+            <p class="animated fadeInUp ">一个我的世界老牌服务器-开服时间长达：<em>8年</em></p>
+                </div>
+
+
+
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+
+                <div class="panel-body">
+                    <p><h1>公告</h1></p>
+                </div>
+                <div class="mb-2"> <a href="/Home/add" class="btn btn-success">发表公告</a></div>
+                <!-- Table -->
+                <table class="table text-left">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>类型</th>
+                            <th>公告标题</th>
+                            <th>发布时间</th>
+                            <th colspan="3" class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            List<NoticeInfo> noticeInfos = new List<NoticeInfo>();
+                            noticeInfos = Model;
+                            int i = 0;
+                            noticeInfos.Reverse();
+                            foreach (NoticeInfo u in noticeInfos)
+                            {
+                                i++;
+
+                                if (u.Type == 0)
+                                {
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <th><label class="text-success">公告</label></th>
+                                        <td>@u.Tit</td>
+                                        <td>@u.SubTime</td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/Details/@u.ID" class="btn btn-primary">详情</a>
+                                        </td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/update/@u.ID" class="btn btn-primary">修改</a>
+                                        </td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/del/@u.ID" class="btn btn-warning">删除</a>
+                                        </td>
+                                    </tr>
+
+                                }
+                                else if (u.Type == 1)
+                                {
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <th><label class="text-primary">活动</label></th>
+                                        <td>@u.Tit</td>
+                                        <td>@u.SubTime</td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/Details/@u.ID" class="btn btn-primary">详情</a>
+                                        </td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/update/@u.ID" class="btn btn-primary">修改</a>
+                                        </td>
+                                        <td style="width: 85px;" class="text-center">
+                                            <a href="/Home/del/@u.ID" class="btn btn-warning">删除</a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+
+        </div>
+       
+    </div>
+
+</div>

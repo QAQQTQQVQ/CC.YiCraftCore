@@ -1,0 +1,31 @@
+﻿@model CC.YiCraftCore.Models.CommentInfo
+
+@{
+    Layout = "_Layout";
+}
+
+
+    <div class="row mb-2" style="margin-top: 50px;">
+       
+        <div class="col-md-4 m-auto shadow">
+            <a asp-action="Index" class="btn btn-warning my-2">返回</a>
+            <form method="post" asp-action="AddCom">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group text-center">
+                    <label asp-for="Info" class="control-label h2"></label>
+                    <textarea asp-for="Info" class="form-control" cols="20" rows="8"></textarea>
+                    <span asp-validation-for="Info" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="发表" class="btn btn-primary col-12" />
+                </div>
+                <input hidden="hidden" value="@ViewBag.NotID" name="NotID" id="NotID">
+            </form>
+        </div>
+    </div>
+
+
+
+

@@ -1,0 +1,87 @@
+﻿@model CC.YiCraftCore.Models.NoticeInfo
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<div style="margin-top: 50px;"></div>
+<h1 class="mx-4"> <a href="/Home/Index" class="btn btn-primary">返回</a></h1>
+<div class="row mx-4 mt-4 mb-4 shadow" style="margin-top: 100px;">
+    <hr>
+    <div class="col-2 text-center" style="background-color:#84898f ;">
+        <h1>楼主</h1>
+        <h4>作者：@Model.Uname</h4>
+        <h4>等级：LV</h4>
+    </div>
+
+    <div class="col-10 " style="background-color:#ffffff ;">
+        <h1> @Model.Tit</h1>
+        <h4>发表于： @Model.SubTime</h4>
+        <hr>
+        <p> @Model.Info</p>
+        @if (Model.Type == 0)
+        {<h1><a class=" btn btn-primary" href="/Home/AddCom/@Model.ID">我要评论公告！</a></h1>}
+        else if (Model.Type == 1)
+        {
+            <h1><a class=" btn btn-primary" href="/Home/AddCom2/@Model.ID">我要参与活动！</a></h1>
+        }
+    </div>
+</div>
+
+
+
+
+@{
+    int i = 1;
+    List<CommentInfo> commentInfos = new List<CommentInfo>();
+    commentInfos = (List<CommentInfo>)ViewData["Com"];
+
+    if (Model.Type == 0)
+    {
+        foreach (CommentInfo k in commentInfos)
+        {
+
+            <div class="row mx-4 my-2  shadow">
+                <hr>
+                <div class="col-2 text-center" style="background-color:#84898f ;">
+                    <h1>楼层：@i</h1>
+                    <h4>作者：@k.Uname</h4>
+                    <h4>等级：LV</h4>
+                </div>
+
+                <div class="col-10 " style="background-color:#ffffff ;">
+
+                    <h4>发表于:@k.SubTime</h4>
+                    <hr>
+                    <p>@k.Info</p>
+                    <h1> <a href="/Home/DelCom?NotID=@k.NotID&ID=@k.ID" class="btn btn-warning">删除评论</a></h1>
+                </div>
+            </div>
+            i++;
+        }
+    }
+
+    if (Model.Type == 1)
+    {
+        <div class="row mx-4 my-2  shadow">
+            @foreach (CommentInfo k in commentInfos)
+            {
+                <div class="col-2 text-center my-1" style="background-color:#84898f ;">
+                    <h1>楼层：@i</h1>
+                    <h4>作者：@k.Uname</h4>
+                    <h4>等级：LV</h4>
+                </div>
+                <div class="col-2 my-1  " style="background-color:#ffffff ;">
+                    <h4>投票成功！</h4>
+                    <h4>投票时间:@k.SubTime</h4>
+                    <h1> <a href="/Home/DelCom?NotID=@k.NotID&ID=@k.ID" class="btn btn-warning">删除投票</a></h1>
+                </div>
+                i++;
+            }
+        </div>
+    }
+
+}

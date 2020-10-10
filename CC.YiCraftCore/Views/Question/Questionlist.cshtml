@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@using CC.YiCraftCore.Repository
+@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor  _httpContextAccessor
+@{
+
+    List<CC.YiCraftCore.Models.QuestionInfo> listquest = SessionExtensionsHelper.Get<List<QuestionInfo>>(_httpContextAccessor.HttpContext.Session, "question");
+    int pagenumber = (int)_httpContextAccessor.HttpContext.Session.GetInt32("pagenumber");
+
+}
+                <div class="row"></div>
+                <div class="mx-auto bg-white img-rounded col-6 shadow text-center py-4" style="margin-top:10%;">
+                    <form action="/Question/Questionlist" method="post">
+                        <h1>@pagenumber /10</h1>
+                        <h2> @listquest[pagenumber].question</h2>
+                        <p><input type="submit" name="btn" class="btn btn-primary shadow col-10" value="A：@listquest[pagenumber].A"></p>
+                        <p><input type="submit" name="btn" class="btn btn-primary shadow col-10" value="B：@listquest[pagenumber].B"></p>
+                        <p><input type="submit" name="btn" class="btn btn-primary shadow col-10" value="C：@listquest[pagenumber].C"></p>
+                        <p><input type="submit" name="btn" class="btn btn-primary shadow col-10" value="D：@listquest[pagenumber].D"></p>
+                    </form>
+                </div>
+        }
+
+<script>
+    x = 20
+    function countSecond() {
+        x = x - 1
+        if (x <= 0) {
+            location.href = "index"
+        }
+        document.getElementById("demo").innerHTML = "倒计时：" + x;
+        setTimeout("countSecond()", 1000)
+    }
+    // 执行函数
+    countSecond()
+</script>

@@ -43,7 +43,7 @@ namespace CC.YiCraftCore
             services.AddScoped<ICommentInfoRepository, CommentInfoRepository>();
             services.AddScoped<IJurisdictionHelper, JurisdictionHelper>();
             services.AddScoped<IQuestionInfoRepository, QuestionInfoRepository>();
-          services.AddSession();
+              services.AddSession();
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
 
